@@ -1,12 +1,24 @@
+import { TypeMonster } from "@/types/TypeMonster";
 import Image from "next/image";
 import React from "react";
 
-const Card = () => {
+interface CardProps {
+  monster: TypeMonster;
+}
+
+const Card = ({ monster }: CardProps) => {
   return (
-    <div className="flex flex-col p-2 items-center justify-center bg-slate-400">
-      <Image src="/1.png" alt="monster" width={100} height={150} />
-      <h2>Leanne Graham</h2>
-      <p>Sincere@april.biz</p>
+    <div className="flex flex-col p-2 items-center justify-center bg-[#95DADA] rounded-md cursor-pointer hover:scale-105 transition-all ease-in duration-200">
+      <Image
+        src={`https://robohash.org/${monster.id}?set=set2&size=180x180`}
+        alt="monster"
+        width={200}
+        height={250}
+      />
+      <h2 className="text-xl font-bold w-full text-center mt-5">
+        {monster.name}
+      </h2>
+      <p className="text-sm text-center py-8">{monster.email}</p>
     </div>
   );
 };
